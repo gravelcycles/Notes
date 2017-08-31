@@ -26,7 +26,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
     If you'd like to SSH without a password onto any other lab computer, add the following to your `config` file for each machine you want to log onto:
 
     ```
-    Host <your_nickname_for_the_host_machine>
+    Host <host_name>
 
     ProxyCommand ssh -o StrictHostKeyChecking=no lee nc %h 22
 
@@ -48,3 +48,5 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
     ```
     scp id_rsa.pub lee:.ssh/authorized_keys
     ```
+    
+5. Now, you should be able to log onto any lab computer that you have (1) added your public key to its `authorized_key` file and (2) added the necessary code to your `config` file. All you need to log onto `lee` now is the following: `ssh lee`.
