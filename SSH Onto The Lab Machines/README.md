@@ -1,6 +1,4 @@
-# Notes
-
-## Help with easily accessing the lab computers.
+# Help with easily accessing the lab computers.
 
 If you are connecting to the department of computer science computer lab from ssh on your laptop, you should, if all possible, use public key authentication rather than a password authentication.
 
