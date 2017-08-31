@@ -9,8 +9,8 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
 
 ## How to use public key encryption on the lab computers
 
-1. On your machine, `cd ~/.ssh`. You are now in the hidden folder on your machine that deals with SSH. We will need to modify these files slightly.
-2. In your .ssh folder, generate a public-private key pair by running the following command: `ssh-keygen`. You will need to name the file (I would recommend `id_rsa_<your_user_name>`) and provide a password (I would recommend leaving the password blank).
+1. On your machine, change directories to your machine's hidden SSH folder: `cd ~/.ssh`. We will need to modify these files slightly.
+2. In your .ssh folder, generate a public-private key pair by running the following command: `ssh-keygen`. You will need to name the file (I would recommend just `id_rsa`) and provide a password (I would recommend leaving the password blank).
 3. In your .ssh folder, open the file "config" with your editor of choice. You will need to add a few things:
 
     ```
@@ -26,7 +26,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
     If you'd like to SSH without a password onto any other lab computer, add the following for each machine you want to log onto:
 
     ```
-    Host <hostname>
+    Host <your_nickname_for_the_host_machine>
 
     ProxyCommand ssh -o StrictHostKeyChecking=no lee nc %h 22
 
@@ -43,4 +43,4 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
     scp <the_name_of_your_ssh_key>.pub <hostname>:.ssh/authorized_keys
     ```
 
-    For example, if I (username dwgr322) want to copy my public key onto lee, I would do the following: `scp id_rsa_dwgr322.pub lee:.ssh/authorized_keys`
+    For example, if I (username dwgr322) want to copy my public key onto lee, I would do the following: `scp id_rsa.pub lee:.ssh/authorized_keys`. 
