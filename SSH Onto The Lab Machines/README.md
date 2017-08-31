@@ -11,7 +11,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
 
 1. On your machine, change directories to your machine's hidden SSH folder: `cd ~/.ssh`. We will need to modify these files slightly.
 2. In your .ssh folder, generate a public-private key pair by running the following command: `ssh-keygen`. You will need to name the file (I would recommend just `id_rsa`) and provide a password (I would recommend leaving the password blank).
-3. In your .ssh folder, open the file "config" with your editor of choice. You will need to add a few things:
+3. In your .ssh folder, open the file `config` with your editor of choice. You will need to add a few things:
 
     ```
     Host lee
@@ -23,7 +23,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
     IndentityFile <the_name_of_your_ssh_key>
     ```
 
-    If you'd like to SSH without a password onto any other lab computer, add the following for each machine you want to log onto:
+    If you'd like to SSH without a password onto any other lab computer, add the following to your `config` file for each machine you want to log onto:
 
     ```
     Host <your_nickname_for_the_host_machine>
