@@ -10,7 +10,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
 ## How to use public key encryption on the lab computers
 
 1. On your machine, `cd ~/.ssh`. You are now in the hidden folder on your machine that deals with SSH. We will need to modify these files slightly.
-2. In your .ssh folder, `ssh-keygen`. This will create a private-public key pair. I would name it `id_rsa_<your_user_name>` and leave the password blank.
+2. In your .ssh folder, generate a public-private key pair by running the following command: `ssh-keygen`. You will need to name the file (I would recommend `id_rsa_<your_user_name>`) and provide a password (I would recommend leaving the password blank).
 3. In your .ssh folder, open the file "config" with your editor of choice. You will need to add a few things:
 
     ```
