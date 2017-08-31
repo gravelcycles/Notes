@@ -43,4 +43,6 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
     scp <the_name_of_your_ssh_key>.pub <hostname>:.ssh/authorized_keys
     ```
 
-    For example, if I (username dwgr322) want to copy my public key onto lee, I would do the following: `scp id_rsa.pub lee:.ssh/authorized_keys`. 
+    For example, if I (username dwgr322) want to copy my public key onto lee, I would do the following: 
+    
+    `scp id_rsa.pub lee:.ssh/authorized_keys`. 
