@@ -20,7 +20,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
 
     User <your_username>
 
-    IndentityFile <the_name_of_your_ssh_key>
+    IdentityFile <the_name_of_your_ssh_key>
     ```
 
     If you'd like to SSH without a password onto any other lab computer, add the following to your `config` file for each machine you want to log onto:
@@ -32,7 +32,7 @@ If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog
 
     User <your_username>
 
-    IndentityFile <the_name_of_your_ssh_key>
+    IdentityFile <the_name_of_your_ssh_key>
     ```
 
     The "ProxyCommand" line lets you hop from Lee to your host of choice.
