@@ -1,10 +1,10 @@
 # How to easily log into the lab computers.
 
-If you use the lab machines a lot, it quickly becomes a pain to type `ssh usrname@lee.cs.miami.edu` and then type in your password over and over again. This becomes especially painful if you want to (1) have multiple shells open at once (2) go from Lee to another lab machine. Public key authentification allows you to shortcut this process: if set up correctly, you can log into any lab machine quickly without remembering your password. For example, I can log into the Boston host with just `ssh boston`. Follow the steps below to learn how.
+If you use the lab machines a lot, it quickly becomes a pain to type `ssh usrname@lee.cs.miami.edu` and then type in your password over and over again. This becomes especially painful if you want to (1) have multiple shells open at once (2) go from Lee to another lab machine. Public key authentication allows you to shortcut this process: if set up correctly, you can log into any lab machine quickly without remembering your password. For example, I can log into the Boston host with just `ssh boston`. Follow the steps below to learn how.
 
 Public key authentication is a technique that works through a key pair: a public key and a private key. By giving the lab machines a public key that is linked to a private key that you hold, the lab machines will securely know that it is you. 
 
-If you want to learn more about how private key authentification works, Dr. Rosenberg has more on the topic here: http://blog.cs.miami.edu/burt/2015/02/02/ssh-to-the-lab-machines/
+If you want to learn more about how private key authentication works, Dr. Rosenberg has more on the topic here: http://blog.cs.miami.edu/burt/2015/02/02/ssh-to-the-lab-machines/
 
 
 ## Let's get you started
