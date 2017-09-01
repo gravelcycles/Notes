@@ -1,13 +1,15 @@
 # How to easily log into the lab computers.
 
-If you are connecting to the department of computer science computer lab from ssh on your laptop, you should, if all possible, use public key authentication rather than a password authentication.
+If you use the lab machines a lot, it quickly becomes a pain to type `ssh usrname@lee.cs.miami.edu` and then type in your password over and over again. This becomes especially painful if you want to (1) have multiple shells open at once (2) go from Lee to another lab machine. 
 
-Public key authentication is a technique that works through a key pair: a public key and a private key. The pair are related strongly, although the private key cannot be computed (practically speaking) from the public key. The public key can be used, however, in a protocol that convinces the public key holder that the counter-party of the protocol knows the private key while releasing minimal information about the private key.
+Public key authentification allows you to shortcut this process: if set up correctly, you can log into any lab machine quickly without remembering your password. For example, I can log into `boston` with just `ssh boston`. Follow the steps below to learn houw.
+
+Public key authentication is a technique that works through a key pair: a public key and a private key. By giving the lab machines a public key that is linked to a private key that you hold, the lab machines will securely know that it is you. 
 
 If you want to learn more, Dr. Rosenberg has more on the topic here: http://blog.cs.miami.edu/burt/2015/02/02/ssh-to-the-lab-machines/
 
 
-## How to use public key encryption on the lab computers
+## Let's get you started
 
 1. On your machine, change directories to your machine's hidden SSH folder: `cd ~/.ssh`. We will need to modify these files slightly.
 2. In your .ssh folder, generate a public-private key pair by running the following command: `ssh-keygen`. You will need to name the file (I would recommend just `id_rsa`) and provide a password (I would recommend leaving the password blank).
