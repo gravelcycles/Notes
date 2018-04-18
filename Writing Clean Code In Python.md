@@ -3,7 +3,7 @@ Inefficient software isn't gross. What's gross is a language that makes programm
 -Paul Graham
 
 ---
-[Link To The Talk](https://tinyurl.com/rsmas-python1)
+Link To The Talk: https://tinyurl.com/rsmas-python1
 ---
 
 ## What is Clean Code?
