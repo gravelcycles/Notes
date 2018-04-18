@@ -413,10 +413,11 @@ if __name__ == "__main__":
 1. Types can make the code more readable and can catch errors before execution
 
 ```python
+from typing import List
+
 def greeting(name: str) -> str:
     return 'Hello ' + name
 
-from typing import List
 Vector = List[float]
 
 def scale(scalar: float, vector: Vector) -> Vector:
