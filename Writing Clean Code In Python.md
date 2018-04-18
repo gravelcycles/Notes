@@ -45,6 +45,8 @@ f = lambda x: 2*x
 
 # Yup
 def double(x): return 2*x
+
+# From PEP 8: Always use a def statement instead of an assignment statement that binds a lambda expression directly to an identifier.
 ```
 
 ##### 2. KISS - Keep It Simple Stupid
