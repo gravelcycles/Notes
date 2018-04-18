@@ -28,7 +28,6 @@ Clean code is
 
 ## Writing Clean Code 
 
-
 ### Design Rules
 
 ##### 1. Follow standard coding conventions
@@ -240,21 +239,7 @@ If the implementation is easy to explain, it may be a good idea.
 
 ### Iteration Everywhere!
 
-##### 1. Iterating over a list in reverse
-```python
-
-colors = ['red', 'green', 'blue', 'yellow']
-
-# Bad
-for i in range(len(colors)-1, -1, -1):
-    print colors[i]
-
-# Better
-for color in reversed(colors):
-    print color
-```
-
-##### 2. Iterating over indices
+##### 1. Iterating over indices
 ```python
 colors = ['red', 'green', 'blue', 'yellow']
 
@@ -267,7 +252,7 @@ for i, color in enumerate(colors):
     print i, '--->', color
 ```
 
-##### 3. Iterating over Multiple Collections
+##### 2. Iterating over Multiple Collections
 ```python
 names = ['raymond', 'rachel', 'matthew']
 colors = ['red', 'green', 'blue', 'yellow']
@@ -282,18 +267,7 @@ for name, color in zip(names, colors):
     print name, '--->', color
 ```
 
-##### 4. Iterating over Dictionaries
-```python
-# Not very fast, has to re-hash every key and do a lookup
-for k in d:
-    print k, '--->', d[k]
-
-# Supa fast.
-for k, v in d.items():
-    print k, '--->', v
-```
-
-##### 5. Counting and Grouping with Dictionaries
+##### 3. Counting and Grouping with Dictionaries
 ```python
 # Not so elegant
 colors = ['red', 'green', 'red', 'blue', 'green', 'red']
@@ -350,6 +324,10 @@ for name in names:
     d[key].append(name)
 ```
 
+##### 4. On A Deeper Level, Python 3.6 is Iterators
+1. Delays computation until you a values is needed
+2. `map`, `filter`, and all of `itertools` are powerful for writing clean and efficient code
+
 ### Tuple Packing and Unpacking
 1. You can pack and unpack tuples with commas
 2. We have already been doing that when dealing with `enumerate` and `zip`
@@ -364,6 +342,7 @@ def fibonacci(n):
         t = y
         y = x + y
         x = t
+
 # Better
 def fibonacci(n):
     x, y = 0, 1
@@ -386,6 +365,7 @@ a, *middle, c = [1, 2, 3, 4]
 ```python
 fname, __, lname = ("David", "Welin", "Grossman")
 ```
+
 ---
 
 ## Errata
@@ -406,9 +386,9 @@ def function1(arg1, arg2):
 if __name__ == "__main__":
     # Run code when the script is executed as a standalone function
     pass
-```
+``
 
-### Typing 
+### Typing
 1. Python doesn't have declared types. However, you can optionally use types
 1. Types can make the code more readable and can catch errors before execution
 
@@ -424,6 +404,19 @@ def scale(scalar: float, vector: Vector) -> Vector:
     return [scalar * num for num in vector]
 
 ```
+
+
+---
+
+## The Important Points to Take Away
+1. Use linters
+    - They will create a syntax and coding standard
+    - They will pick up bugs before runtime
+1. Optimize for Readability and Reusability
+    - Eat your vegetables today so that tomorrow you will be fit and strong. And have a fantastic code base!!
+1. Modular code
+    - Rewrite everything into functions
+    - Break problems down into their fundamental steps and work up from there
 
 ---
 
