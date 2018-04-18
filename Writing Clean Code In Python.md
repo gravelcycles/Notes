@@ -1,6 +1,6 @@
 # Writing Clean Code in Python
 Inefficient software isn't gross. What's gross is a language that makes programmers do needless work. Wasting programmer time is the true inefficiency, not wasting machine time.
-- Paul Graham
+-Paul Graham
 
 ---
 
