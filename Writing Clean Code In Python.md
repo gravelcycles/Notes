@@ -220,6 +220,7 @@ def append_to(element, to=None):
 ```python
 >>> import this
 ```
+```
 The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
@@ -235,7 +236,7 @@ There should be one-- and preferably only one --obvious way to do it.
 Although that way may not be obvious at first unless you're Dutch.
 If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
-
+```
 
 ### Iteration Everywhere!
 
