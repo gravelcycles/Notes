@@ -29,9 +29,6 @@ Clean code is
 ## Writing Clean Code 
 
 
-
----
-
 ### Design Rules
 
 ##### 1. Follow standard coding conventions
@@ -44,7 +41,7 @@ Clean code is
     - [Python Linters In Practice](https://jeffknupp.com/blog/2016/12/09/how-python-linters-will-save-your-large-python-project/)
 
 ```python
-# Nope
+# Nope/
 f = lambda x: 2*x
 
 # Yup
@@ -222,7 +219,7 @@ def append_to(element, to=None):
 
 ```python
 >>> import this
-
+```
 The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
@@ -238,7 +235,6 @@ There should be one-- and preferably only one --obvious way to do it.
 Although that way may not be obvious at first unless you're Dutch.
 If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
-```
 
 
 ### Iteration Everywhere!
@@ -391,22 +387,46 @@ fname, __, lname = ("David", "Welin", "Grossman")
 ```
 ---
 
-## Writing 
+## Errata
 
+### On Modular Code
+1. When writing Python modules, all code should be in a function
+1. Use `if __name__ == "__main__"` to allow the script to run as a standalone program too
 
-4. 
+```python
+from that import this
+import this_other_thing
 
-## Idiomatic Python
-1. Variable names should be descriptive
-2. Function Arguments
-    - Positional arguments 
-    - Keyword arguments
-3. The layout of a Pythonic module
-    - Comments on module
-    - import statements
-    - functions
-    - `if __name__ == "__main__"`
-    - No global variables if possible
-4. Packing and Unpacking: Tuples in Python
-5. Iterators Galore!
-6. Check if you're following standards by using linters
+def function1(arg1, arg2):
+    return arg1 * arg2
+
+# ...
+
+if __name__ == "__main__":
+    # Run code when the script is executed as a standalone function
+    pass
+```
+
+### Typing 
+1. Python doesn't have declared types. However, you can optionally use types
+1. Types can make the code more readable and can catch errors before execution
+
+```python
+def greeting(name: str) -> str:
+    return 'Hello ' + name
+
+from typing import List
+Vector = List[float]
+
+def scale(scalar: float, vector: Vector) -> Vector:
+    return [scalar * num for num in vector]
+
+```
+
+---
+
+## Next Time
+1. Python Code Base Structure
+2. Logging Events in Code
+3. Good software practices for working in a team
+4. A closer look at some RSMAS code
