@@ -41,7 +41,7 @@ Clean code is
     - [Python Linters In Practice](https://jeffknupp.com/blog/2016/12/09/how-python-linters-will-save-your-large-python-project/)
 
 ```python
-# Nope/
+# Nope
 f = lambda x: 2*x
 
 # Yup
@@ -88,7 +88,7 @@ result = []
 
 ---
 
-### Writing Functions (Reusability!)
+### Writing Functions
 1. Optimize for reusability
     - If you think you'll reuse something, make it into a function
 1. Small and do one thing.
