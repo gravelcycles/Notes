@@ -198,7 +198,7 @@ def append_to(element, to=[]):
 >>> my_list = append_to(12)
 [12]
 
-my_other_list = append_to(42)
+>>> my_other_list = append_to(42)
 [12, 42]
 
 def append_to(element, to=None):
