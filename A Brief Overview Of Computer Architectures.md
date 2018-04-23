@@ -1,5 +1,6 @@
 # A Brief Overview of Computer Architecture
 - Big ideas: Memory, CPUs, and Networking
+
 ![](http://easy-directory.info/wp-content/uploads/2017/06/arch1.gif)
 
 
