@@ -3,7 +3,7 @@
 - Let's draw some pictures!
 
 ## Link to Lecture
-https://tinyurl.com/rsmas-parallel
+https://tinyurl.com/rsmas-python2
 
 
 ## Memory Layout
