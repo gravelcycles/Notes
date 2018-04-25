@@ -1,13 +1,15 @@
 # A Brief Overview of Computer Architecture
 - Big ideas: Memory, CPUs, and Networking
-
-![](http://easy-directory.info/wp-content/uploads/2017/06/arch1.gif)
+- Let's draw some pictures!
 
 
 ## Memory Layout
-![](https://www.researchgate.net/profile/Bojan_Jovanovic/publication/281805561/figure/fig1/AS:324966131224576@1454489371431/Typical-structure-of-a-computer-memory-hierarchy.png)
+![](http://faculty.etsu.edu/tarnoff/othr2150/mem_hier.gif)
 
 ## CPU Layout and Networking
+1. Somewhere between 1 and 16 cores
+2. Modern processors will support hyperthreading / virtual cores
+	- Oftentimes the benefit of two processors for the price of 1!
 ![](https://www.gamingscan.com/wp-content/uploads/2017/12/cpu-core-for-gaming.jpg)
 
 ## Numbers Every Programmer Should Know
@@ -19,9 +21,7 @@ Latency Comparison Numbers (~2012)
 | Event                              | Nanoseconds   | Microseconds | Milliseconds | Comparison    |
 |------------------------------------|--------------:|--------:|----:|-----------------------------|
 | L1 cache reference                 |           0.5 |       - |   - | -                           |
-| Branch mispredict                  |           5.0 |       - |   - | -                           |
 | L2 cache reference                 |           7.0 |       - |   - | 14x L1 cache                |
-| Mutex lock/unlock                  |          25.0 |       - |   - | -                           |
 | Main memory reference              |         100.0 |       - |   - | 20x L2 cache, 200x L1 cache |
 | Compress 1K bytes with Zippy       |       3,000.0 |       3 |   - | -                           |
 | Send 1K bytes over 1 Gbps network  |      10,000.0 |      10 |   - | -                           |
@@ -49,9 +49,7 @@ Magnitudes:
 Minute:
 -----
     L1 cache reference                  0.5 s         One heart beat (0.5 s)
-    Branch mispredict                   5 s           Yawn
     L2 cache reference                  7 s           Long yawn
-    Mutex lock/unlock                   25 s          Making a coffee
 
 Hour:
 -----
@@ -101,20 +99,114 @@ Decade
     - These are called threads
     - A child thread and its parent share the same memory (usually)
 
+## Rolling Your Own Processes in Python: `subprocess`
+1. Running a script from the command line
+```python
+import subprocess
+subprocess.call(['python3 run_me.py', shell=True])
+```
+2. Getting the stdout and stderr from a process
+```python
+output, errors = subprocess.Popen(['ls', '-la', '*.py'], 
+			          stdout=subprocess.PIPE).communicate()
+```
+3. Piping processes
+```python
+p1 = subprocess.Popen(["cat", "file.log"], stdout=subprocess.PIPE)
+p2 = subprocess.Popen(["tail", "-1"], stdin=p1.stdout, stdout=subprocess.PIPE)
+p1.stdout.close()  # Allow p1 to receive a SIGPIPE if p2 exits.
+output,err = p2.communicate()
+```
+
 # Parallel Programming
 1. Lots of models
 2. Hard to do super efficiently
 3. However, there are some easy ways to get gains
 
-## Map Reduce
+## Multi-Core Parallel Computing vs. Distributed Parallel Computing
+1. Using many cores from your machines is different than using many cores on multiple machines
+2. Pegasus, as far as I can tell, makes it as if you are using a lot of cores on one machine
+
+## Big Ideas that Matter
+
+### `numpy` is your friend
+1. Vectorizing functions is the easiest step to wriitng fast and parallel code
+2. Many Numpy Operations already are parallelized across machines
+
+### Split-Apply-Combine
+1. Split
+    - Think about how to break up the data so that you can compute the same thing on smaller parts of the larger dataset
+2. Apply
+    - Solve the problem a bunch of times on smaller versions of your large data
+3. Combine
+    - Then combine those mini solutions into one big solution
+
+### Data Needs to be Independent
+1. In image analysis, you can apply convolutions because they only matter on a small subset of the data 
+2. If you need all of the data to do each computation, it's less efficient
 
 
-## Python 
-1. Subprocess
-2. multiprocessing
-    - https://stackoverflow.com/questions/2846653/how-to-use-threading-in-python
 
-## Issues
-1. Big Data
-2. 
+## MapReduce or Map and then Reduce
+```python
+# Parallel version is equivalent to the following
+def map_parallel(func, input_data):
+    intermediate_data = []
+    for i in input_data:
+        intermediate_data.append(func(i)
+    return intermediate_data
 
+def reduce(func, intermediate_data):
+    starting_value = None
+    for value in intermediate_data:
+        if starting_value == None:
+          starting_value = value
+        else:
+          starting_value = func(starting_value, value)
+    return value
+```
+
+### MapReduce in Python: `multiprocessing`
+1. Prepare data to be split between processors
+2. Use `multiprocessing` to apply `map` step
+3. Combine the results of the `map` result as needed
+4. Easy when your data is small
+5. Good for simple functions
+6. [Some good examples](https://stackoverflow.com/questions/2846653/how-to-use-threading-in-python)
+
+```python
+from multiprocessing import Pool
+
+def f(x):
+    return x*x
+
+if __name__ == '__main__':
+    with Pool(5) as p:
+        print(p.map(f, [1, 2, 3]))
+
+###################################
+
+# Sequential
+results = []
+for item in my_array:
+    results.append(my_function(item))
+
+# Parallel
+from multiprocessing.dummy import Pool as ThreadPool 
+pool = ThreadPool(4) 
+results = pool.map(my_function, my_array)
+
+```
+
+### `Numba`
+1. For more complicated parallel tasks
+2. Converts functions to C code
+3. Can parallelize code easily (if you read the documentation :D )
+
+```python
+@numba.jit(nopython=True, parallel=True)
+def logistic_regression(Y, X, w, iterations):
+    for i in range(iterations):
+        w -= np.dot(((1.0 / (1.0 + np.exp(-Y * np.dot(X, w))) - 1.0) * Y), X)
+    return w
+```
