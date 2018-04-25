@@ -220,3 +220,15 @@ def logistic_regression(Y, X, w, iterations):
 2. Figuring out your dependencies: `pip freeze`
 3. `pylint <filename>` for linting
 4. `autopep8 <filename>` for correcting easy linting errors
+
+## Testing
+1. Two types
+	1. Unit Test
+		- Just tests individual functions
+		- Define some input and some desired output
+		- Tests whether it works
+	2. Integration Test
+		- Combining functions
+		- COmbining modules
+		- Very simple example cases
+2. Tests are written in a separate folder usually
