@@ -213,3 +213,10 @@ def logistic_regression(Y, X, w, iterations):
         w -= np.dot(((1.0 / (1.0 + np.exp(-Y * np.dot(X, w))) - 1.0) * Y), X)
     return w
 ```
+
+
+# Post Session Discussion
+1. Virtual environments: https://conda.io/docs/user-guide/tasks/manage-environments.html
+2. Figuring out your dependencies: `pip freeze`
+3. `pylint <filename>` for linting
+4. `autopep8 <filename>` for correcting easy linting errors
