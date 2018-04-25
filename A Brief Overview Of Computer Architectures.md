@@ -2,6 +2,9 @@
 - Big ideas: Memory, CPUs, and Networking
 - Let's draw some pictures!
 
+## Link to Lecture
+https://tinyurl.com/rsmas-parallel
+
 
 ## Memory Layout
 ![](http://faculty.etsu.edu/tarnoff/othr2150/mem_hier.gif)
