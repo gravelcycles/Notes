@@ -1,26 +1,24 @@
 # Code Review
-I am working with Dr. Amelung's research group at the Rosenstiel School of Marine and Atmospheric Science (RSMAS) to improve their software development processes. This document should serve as a How To for using Code Review on Dr. Amelung's team or setting it up on your own team!
-
-## Prerequisites
-##### TODO
+I am working with Dr. Amelung's research group at the Rosenstiel School of Marine and Atmospheric Science (RSMAS) to improve their software development processes. This document should serve as a `How To` for using Code Review in Dr. Amelung's team and setting it up on your own team!
 
 ## What is Code Review?
-Code Review has become an industry standard amongst software teams within the past 5-10 years. 
 
-When a developer makes a code modification (adding a new feature, refactoring old code, etc), another developer will read over the code before it is committed to the `master` repository and comment on coding style, any logical errors, and different or better approaches to the same problem. After the second developer has commented, the first developer will go back and fix any suggestions made. 
+When a developer makes a code modification (adding a new feature, refactoring old code, etc), another developer will read over the code before it is committed to the `master` repository. The reviewer will comment on coding style, any logical errors, and different or better approaches to the same problem. After the second developer has commented, the first developer will go back and fix any suggestions made. 
 
-A key aspect of Code Review is that the reviewer can block the code writer from merging the changes to `master` before the comments the reviewer made are put into place.
+Code Review has become an industry standard amongst software teams within the past 5-10 years. Every team from Google to your 5 person startup has started using Code Review and we should too! Trust me, Code Review will give you superpowers.
 
-We will get more into the process of how this works, but let's first dive into why do this in the first place.
+[More on Code Review from Atlassian](https://www.atlassian.com/agile/software-development/code-reviews)
 
 ## Why Code Review?
+This seems pretty simple. So what does Code Review do for us?
+
 Code Review **enables knowledge to be shared across multiple members of a team**. When a developer reviews another developer's code, the reviewer learns about another part of the codebase. Also, as a developer writing code, your reviewer may have more knowledge about that subsystem than you and might see a better way to approach the problem.
 
-Code Review also **ensures a codebase converges to a consistent style**. People tend to have different coding styles which can make it more difficult to understand a codebase. If a whole codebase has the same style, I can understand any part of the codebase more quickly. Consistent style improves readability and Code Review encourages developers to first converge via discussion on a consistent coding style and then maintain a more-uniform style.
+Code Review **ensures a codebase converges to a consistent style**. People tend to have different coding styles which can make it more difficult to understand a codebase. If a whole codebase has the same style, I can understand any part of the codebase more quickly. Consistent style improves readability and Code Review encourages developers to first converge via discussion on a consistent coding style and then maintain a more-uniform style.
 
 Code Review **increases code legibility**. If one person _must_ read your code before you commit it, you will know your code is at least legible to one person. Code reviewers will (in a good Code Review process) push for more legible solutions.
 
-So in the end, Code Review should lead to a cleaner codebase with more people understanding the codebase. Although initially Code Review slows down the developer process (you can't just `push` to `origin:master`!), the speed of the team will increase. You, a developer, will have knowledge about more subsystems and will be able to move more freely around the codebase. You will also be able to iterate on your coding abilities more quickly by getting more feedback from those around you.
+So in the end, Code Review should lead to a cleaner codebase with increased intra-team knowledge sharing. Although initially Code Review slows down each developer's process (you can't just `push` to `origin:master`!), the speed of the team as a whole will increase. You, a developer, will have knowledge about more subsystems and will be able to move more freely across the codebase. You will also be able to iterate on your coding abilities more quickly by getting more feedback from those around you.
 
 ## Code Review Guidelines
 Code Review can improve your efficacy as an individual and the output of your team, however the process can become impractical if executed haphazardly. Here are some guidelines on how to have an effective Code Review process.
@@ -36,7 +34,7 @@ As part of the review process, your code reviewer will often ask for you to make
 Reviewing your own code is a great skill to hone. Thoroughly reviewing your own code line by line will help you catch bugs and style issues before anyone else even looks at your code. This also respects the time of your peers; submitting unpolished code for review wastes the time of your reviewer. Instead of just focusing on the BIG issues, your reviewer also has to comment on your commented code that should be deleted, your unused functions, or your personal code comments.
 
 #### 3. Keep your changes as small as possible, but no smaller
-A common phenomenon is that larger commits are less likely to be well-reviewed. It's hard to read and understand lots of code. Your code will receive better feedback and your reviewer will be happier ( :D ) if you break one LARGE commit into multiple smaller commits. 
+A common phenomenon is that larger commits are less likely to be well-reviewed. It's hard to read and understand lots of code. Your code will receive better feedback and your reviewer will be happier (😃) if you break one LARGE commit into multiple smaller commits. 
 
 A good rule of thumb is to keep each commit to 50-100 lines.
 
@@ -50,11 +48,8 @@ And of course, comment your code! These comments should provide meaningful infor
 #### 5. Remember: You are interested in seeing your code *im*proved, not just *ap*roved
 It's tough when you've put in 30 minutes to 2 hours into a commit and then someone asks you to redo part or all of it. However, it's all about the process. Good software developers are process-driven over outcome-driven. We need to ship code, but we want to ship the best code we can. Remember that you and your reviewer are both looking to accomplish the same outcome. Your reviewer is your best resource to improving your code and your coding process.
 
-### Guidelines for Code Reviewers
-TODO
-
 ## Code Review on GitHub
-GitHub supports Code Review via Pull Requests. Here are a couple of resources I found useful to understanding the Pull Request flow: [About Pull Requests](https://help.github.com/articles/about-pull-requests/) and [GitHub Code Review](https://github.com/features/code-review/).
+GitHub supports Code Review via Pull Requests. Here are a couple of resources I found useful when trying to grok the Pull Request flow: [About Pull Requests](https://help.github.com/articles/about-pull-requests/) and [GitHub Code Review](https://github.com/features/code-review/).
 
 Although you should be doing this already, you are required to create a separate branch with your changes before creating a Pull Request and then `push` this new branch to `origin`. Some of this is automated for you using a tool called `hub` (discussed below), however I would strongly suggest that you [understand branching](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging). Branching gives you super powers.
 
