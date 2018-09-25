@@ -18,7 +18,7 @@ Code Review **enables knowledge to be shared across multiple members of a team**
 
 Code Review also **ensures a codebase converges to a consistent style**. People tend to have different coding styles which can make it more difficult to understand a codebase. If a whole codebase has the same style, I can understand any part of the codebase more quickly. Consistent style improves readability and Code Review encourages developers to first converge via discussion on a consistent coding style and then maintain a more-uniform style.
 
-Code Review **increases code legibility**. If one person _must__ read your code before you commit it, you will know your code is at least legible to one person. Code reviewers will (in a good Code Review process) push for more legible solutions.
+Code Review **increases code legibility**. If one person _must_ read your code before you commit it, you will know your code is at least legible to one person. Code reviewers will (in a good Code Review process) push for more legible solutions.
 
 So in the end, Code Review should lead to a cleaner codebase with more people understanding the codebase. Although initially Code Review slows down the developer process (you can't just `push` to `origin:master`!), the speed of the team will increase. You, a developer, will have knowledge about more subsystems and will be able to move more freely around the codebase. You will also be able to iterate on your coding abilities more quickly by getting more feedback from those around you.
 
@@ -45,7 +45,7 @@ Although code itself should make sense on its own, oftentimes more context on th
 
 Also, title your commits! Git will show ~40 characters for the subject of a commit. Below the subject, using 2 new lines, provide a summary or a couple of paragraphs on your commit. This longer response will be useful not only for your reviewer but for anyone looking back at your code changes.
 
-And of course, comment your code! These comments should provide meaningful information that one would not be able to pick up from just reading the code itself. For more info on writing good comments, check [https://blog.codinghorror.com/code-tells-you-how-comments-tell-you-why/](this) out.
+And of course, comment your code! These comments should provide meaningful information that one would not be able to pick up from just reading the code itself. For more info on writing good comments, check [this](https://blog.codinghorror.com/code-tells-you-how-comments-tell-you-why/) out.
 
 #### 5. Remember: You are interested in seeing your code *im*proved, not just *ap*roved
 It's tough when you've put in 30 minutes to 2 hours into a commit and then someone asks you to redo part or all of it. However, it's all about the process. Good software developers are process-driven over outcome-driven. We need to ship code, but we want to ship the best code we can. Remember that you and your reviewer are both looking to accomplish the same outcome. Your reviewer is your best resource to improving your code and your coding process.
@@ -54,15 +54,15 @@ It's tough when you've put in 30 minutes to 2 hours into a commit and then someo
 TODO
 
 ## Code Review on GitHub
-GitHub supports Code Review via Pull Requests. Here are a couple of resources I found useful to understanding the Pull Request flow: [https://help.github.com/articles/about-pull-requests/](About Pull Requests) and [https://github.com/features/code-review/](GitHub Code Review).
+GitHub supports Code Review via Pull Requests. Here are a couple of resources I found useful to understanding the Pull Request flow: [About Pull Requests](https://help.github.com/articles/about-pull-requests/) and [GitHub Code Review](https://github.com/features/code-review/).
 
-Although you should be doing this already, you are required to create a separate branch with your changes before creating a Pull Request and then `push` this new branch to `origin`. Some of this is automated for you using a tool called `hub` (discussed below), however I would strongly suggest that you [https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging](understand branching). Branching gives you super powers.
+Although you should be doing this already, you are required to create a separate branch with your changes before creating a Pull Request and then `push` this new branch to `origin`. Some of this is automated for you using a tool called `hub` (discussed below), however I would strongly suggest that you [understand branching](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging). Branching gives you super powers.
 
 ### Setting Up Pull Requests from the Command Line
-You can [https://services.github.com/on-demand/github-cli/open-pull-request-github](create Pull Requests) from GitHub's online client. However, it is super useful to create Pull Requests from the command line. Here's how:
+You can [create Pull Requests](https://services.github.com/on-demand/github-cli/open-pull-request-github) from GitHub's online client. However, it is super useful to create Pull Requests from the command line. Here's how:
 
-1. Install [https://github.com/github/hub](Hub). This can be done on a Mac by using `brew install hub` or on a Linux Machine as follows:
-	1. `wget -O hub-linux.tgz https://github.com/github/hub/releases/download/v2.5.1/hub-linux-386-2.5.1.tgz`. The link to the compiled distribution may have changed. Look [https://github.com/github/hub/releases](here) for more info.
+1. Install [Hub](https://github.com/github/hub). This can be done on a Mac by using `brew install hub` or on a Linux Machine as follows:
+	1. `wget -O hub-linux.tgz https://github.com/github/hub/releases/download/v2.5.1/hub-linux-386-2.5.1.tgz`. The link to the compiled distribution may have changed. Look [here](https://github.com/github/hub/releases) for more info.
 	2. `tar -xvf hub-linux.tgz`
 	3. Add an alias to your `.*rc` file of choice. For example, in your `~/.cshrc` file, you would add `alias hub '~/hub-linux/bin/hub`
 		- NOTE: This is not the optimal way to do this. We can't add it to a `bin` directory on Pegasus. I need to reach out to CCS to figure out a good standard on how to do this
@@ -74,7 +74,7 @@ You can [https://services.github.com/on-demand/github-cli/open-pull-request-gith
 ```
 3. Done! You can test that this all works by running `git hub` from an arbitrary folder
 
-Note that `hub` can completely replace `git`. Some people like to do this by aliasing `hub` to `git`, so that whenever you type in `git`, `hub` runs. This works as `hub` is a wrapper on top of `git`, however it can make unclear what program is doing what. Read more [https://news.ycombinator.com/item?id=14429450](here)
+Note that `hub` can completely replace `git`. Some people like to do this by aliasing `hub` to `git`, so that whenever you type in `git`, `hub` runs. This works as `hub` is a wrapper on top of `git`, however it can make unclear what program is doing what. Read more [here](https://news.ycombinator.com/item?id=14429450).
 
 ### Creating a Pull Request from the Command Line
 1. Check out `master` and make sure you have pulled the latest codebase: `git checkout master && git pull`
