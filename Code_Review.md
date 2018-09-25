@@ -12,11 +12,14 @@ Code Review has become an industry standard amongst software teams within the pa
 ## Why Code Review?
 This seems pretty simple. So what does Code Review do for us?
 
-Code Review **enables knowledge to be shared across multiple members of a team**. When a developer reviews another developer's code, the reviewer learns about another part of the codebase. Also, as a developer writing code, your reviewer may have more knowledge about that subsystem than you and might see a better way to approach the problem.
+#### Code Review enables knowledge to be shared across multiple members of a team 
+When a developer reviews another developer's code, the reviewer learns about another part of the codebase. Also, as a developer writing code, your reviewer may have more knowledge about that subsystem than you and might see a better way to approach the problem.
 
-Code Review **ensures a codebase converges to a consistent style**. People tend to have different coding styles which can make it more difficult to understand a codebase. If a whole codebase has the same style, I can understand any part of the codebase more quickly. Consistent style improves readability and Code Review encourages developers to first converge via discussion on a consistent coding style and then maintain a more-uniform style.
+#### Code Review ensures a codebase converges to a consistent style
+People tend to have different coding styles which can make it more difficult to understand a codebase. If a whole codebase has the same style, I can understand any part of the codebase more quickly. Consistent style improves readability and Code Review encourages developers to first converge via discussion on a consistent coding style and then maintain a more-uniform style.
 
-Code Review **increases code legibility**. If one person _must_ read your code before you commit it, you will know your code is at least legible to one person. Code reviewers will (in a good Code Review process) push for more legible solutions.
+#### Code Review increases code legibility 
+If one person _must_ read your code before you commit it, you will know your code is at least legible to one person. Code reviewers will (in a good Code Review process) push for more legible solutions.
 
 So in the end, Code Review should lead to a cleaner codebase with increased intra-team knowledge sharing. Although initially Code Review slows down each developer's process (you can't just `push` to `origin:master`!), the speed of the team as a whole will increase. You, a developer, will have knowledge about more subsystems and will be able to move more freely across the codebase. You will also be able to iterate on your coding abilities more quickly by getting more feedback from those around you.
 
