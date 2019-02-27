@@ -5,12 +5,16 @@
 
 	`/api/:hazard/`
 
-* **Method:**
+* **Use Case**
+  * Get all data for hazard landing page.
+<br/><br/>
+
+* **Method**
 
 	`GET`
 
 
-* **Success Response:**
+* **Success Response**
 
 ```
   {
@@ -26,7 +30,7 @@
   }
 ```
 
-* **Notes:**
+* **Notes**
 
 	TODO
 
@@ -38,6 +42,10 @@
 * **URL**
 
 	`/api/:hazard/:hazard_id`
+
+* **Use Case**
+  * Get data for hazard information page by `hazard_id`.
+<br/><br/>
 
 * **Method**
 
@@ -59,7 +67,7 @@
   * `"last_n_days"=Integer`
 <br/><br/>
 
-* **Success Response:**
+* **Success Response**
 
 ```
 {
@@ -99,7 +107,7 @@
 ```
 
 
-* **Notes:**
+* **Notes**
   * Should we include any metadata with each image?
     - Assuming the image date is "in" the generated image, do we need to include the image date?
   * The `last_n_days` parameter can only be used if neither the `start_date` and `end_date` parameters are used.
@@ -114,7 +122,11 @@
 
 	`/api/:hazard/download/:hazard_id`
 
-* **Method:**
+* **Use Case**
+  * Download data by `hazard_id`
+<br/><br/>
+
+* **Method**
 
 	`GET`
 
@@ -133,6 +145,6 @@
   * `"last_n_days"=Integer`
   * `"dataType"=OneOf["GEOTIFF", "KMZ", "raw", "GIF"]`
 <br/><br/>
-* **Success Response:**
+* **Success Response**
 
 	**Content:** link to file for download
