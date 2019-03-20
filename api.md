@@ -8,7 +8,7 @@ There are three endpoints:
 3. _**Hazard Data Download Endpoint**_: This endpoint will be used by the hazard information page and possibly used independently to generate a zip download.
 
 ## Test Server
-Limited functionality of this API is currently supported at this URL: http://ec2-3-82-161-15.compute-1.amazonaws.com. Check it out!
+Limited functionality of this API is currently supported at this URL: http://ec2-3-82-161-15.compute-1.amazonaws.com. Check out the first API endpoint: http://ec2-3-82-161-15.compute-1.amazonaws.com/api/volcanoes.
 
 Features that are currently not supported.
 1. There is no `earthquakes` support
