@@ -100,8 +100,10 @@ Date: Wed, 20 Mar 2019 18:24:58 GMT
 
 	*Required*
 
-	* `'image_types'=List[Backscatter, TempCoh, ...]`
-  	- Any empty list of `image_type`s (i.e. not declaring the parameter) will retrieve all image types.
+	* `'image_types'=List[geo_backscatter, geo_interferogram, ...]`
+  	- Any empty list of `image_type`s (i.e. not declaring the parameter)
+     will retrieve all image types.
+    - These are the  supported image types: "geo_backscatter", "geo_coherence", "geo_interferogram", "ortho_backscatter", "ortho_coherence", "ortho_interferogram"
 
 	*Optional*
 
