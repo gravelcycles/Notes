@@ -1,66 +1,112 @@
-**Hazards**
+# CSC 431 REST API Protocol
+
+This document describes the protocol for retrieving data from the backend. This API is how frontend will iteract with the backend to retrieve data.
+
+There are three endpoints:
+1. _**Hazards Summary Endpoint**_: This endpoint will be used by the hazard landing page
+2. _**Hazard Data Endpoint**_: This endpoint will be used by the hazard information page.
+3. _**Hazard Data Download Endpoint**_: This endpoint will be used by the hazard information page and possibly used independently to generate a zip download.
+
+**Hazards Summary Endpoint**
 -----------
 
 * **URL**
 
-	`/api/:hazard/`
+	`/api/:hazard_type/`
 
 * **Use Case**
   * Get all data for hazard landing page.
+  * The 2 supported hazard types are "volcanoes" and "earthquakes"
 <br/><br/>
 
 * **Method**
 
-	`GET`
+	`GET /api/<hazard_type>`
 
 
-* **Success Response**
+* **Successful Response example**
 
 ```
-  {
-      "hazard_id" : {
-          "name" : String,
-          "location": {
-              "north": Double,
-              "east": Double,
-              "south": Double,
-              "west": Double
-          },
-          "last_updated" : "mmddyyyy"
-  }
+$ curl -i <url.com>/api/volcanoes
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 627
+Server: Werkzeug/0.14.1 Python/3.6.7
+Date: Wed, 19 Mar 2019 18:22:27 GMT
+
+{
+  "hazards": [
+    {
+      "hazard_id": "VolcanoName0",
+      "last_updated": "05182019",
+      "location": {
+        "latitude": 0.0,
+        "longitude": 0.0
+      },
+      "name": "Volcano Name 0"
+    },
+    {
+      "hazard_id": "VolcanoName1",
+      "last_updated": "05182019",
+      "location": {
+        "latitude": 1.0,
+        "longitude": 1.0
+      },
+      "name": "Volcano Name 1"
+    },
+  ],
+  "type": "volcanoes"
+}
+```
+
+* **Unsuccessful Response**
+
+```
+$ curl -i "<url.com>/api/tornadoes"
+HTTP/1.0 404 NOT FOUND
+Content-Type: application/json
+Content-Length: 70
+Server: Werkzeug/0.14.1 Python/3.6.7
+Date: Wed, 20 Mar 2019 18:24:58 GMT
+
+{
+  "error": "404 Not Found: Hazard Type tornadoes does not exist."
+}
 ```
 
 * **Notes**
 
-	TODO
+	- The `earthquakes` hazard type is not currently implemented on the test server
 
 
 
-**Hazard Data**
+**Hazard Data Endpoint**
 ----------
 
 * **URL**
 
-	`/api/:hazard/:hazard_id`
+	`/api/:hazard_type/:hazard_id`
 
 * **Use Case**
-  * Get data for hazard information page by `hazard_id`.
+  * Get data for the hazard information page by `hazard_id`.
+  * Supported hazards: `volcanoes` and `earthquakes`.
 <br/><br/>
 
 * **Method**
 
-	`GET`
+	`GET /api/:hazard_type/:hazard_id`
 
 * **URL Params**
 
 	*Required*
 
-	* `"id"=Integer`
-	* `"image_type"=List[Backscatter, TempCoh, ...]`
+	* `'image_types'=List[Backscatter, TempCoh, ...]`
+  	- Any empty list of `image_type`s (i.e. not declaring the parameter) will retrieve all image types.
 
 	*Optional*
 
   * `"satellites"=[<satellite_id>]`
+    - An empty list of satellites
   * `"start_date"="mmddyyyy"`
   * `"end_date"="mmddyyyy"`
   * `"max_num_images"=Integer`
@@ -70,39 +116,50 @@
 * **Success Response**
 
 ```
-{
-    "<hazard_id>": {
-          "hazard_name": String,
-          "last_updated": "mmddyyyy",
+$ curl -i "<url.com>/api/volcanoes/VolcanoName?image_types=ortho_interferogram,ortho_backscatter&max_num_images=2"
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 2012
+Server: Werkzeug/0.14.1 Python/3.6.7
+Date: Wed, 20 Mar 2019 18:46:41 GMT
 
-          "location": {
-              "north": Double,
-              "east": Double,
-              "south": Double,
-              "west": Double
-          },
-          "images": {
-                "satellite_id1": {
-                    "dataType1": [
-                        <url_to_image_1>,
-                        <url_to_image_2>,
-                        ...
-                    ],
-                    "dataType2": [
-                        <url_to_image_1>,
-                        <url_to_image_2>,
-                        ...
-                    ],
-                    ...
-                },
-                "satellite_id2": {
-                    "dataType1": [
-                        ...
-                    ],
-                    ...
-                },
-          }
-    }
+{
+  "hazard_id": "VolcanoName",
+  "hazard_name": "Volcano Name",
+  "images_by_satellite": {
+    "satellite_id0": {
+      "ortho_backscatter": [
+        {
+          "compressed_image_url": "/api/images/scatter03061999_compressed.jpg",
+          "date": "03061999",
+          "full_image_url": "/api/images/scatter03061999_full.jpg"
+        },
+        {
+          "compressed_image_url": "/api/images/scatter03061999_compressed.jpg",
+          "date": "03061999",
+          "full_image_url": "/api/images/scatter03061999_full.jpg"
+        }
+      ],
+      "ortho_interferogram": [
+        {
+          "compressed_image_url": "/api/images/scatter03061999_compressed.jpg",
+          "date": "03061999",
+          "full_image_url": "/api/images/scatter03061999_full.jpg"
+        },
+        {
+          "compressed_image_url": "/api/images/scatter03061999_compressed.jpg",
+          "date": "03061999",
+          "full_image_url": "/api/images/scatter03061999_full.jpg"
+        }
+      ]
+    },
+    "satellite_id1": {...}
+  },
+  "last_updated": "05182019",
+  "location": {
+    "latitude": 0.0,
+    "longitude": 0.0
+  }
 }
 ```
 
