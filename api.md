@@ -7,6 +7,16 @@ There are three endpoints:
 2. _**Hazard Data Endpoint**_: This endpoint will be used by the hazard information page.
 3. _**Hazard Data Download Endpoint**_: This endpoint will be used by the hazard information page and possibly used independently to generate a zip download.
 
+## Test Server
+Limited functionality of this API is currently supported at this URL: [](http://ec2-3-82-161-15.compute-1.amazonaws.com). Check it out!
+
+Features that are currently not supported.
+1. There is no `earthquakes` support
+2. There is no support for downloading zips.
+3. How images are served may change
+
+## The API
+
 **Hazards Summary Endpoint**
 -----------
 
