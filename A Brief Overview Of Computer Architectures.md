@@ -6,7 +6,7 @@
 https://tinyurl.com/rsmas-python2
 
 
-## Memory Layout
+## Memory Hierarchy
 ![](http://faculty.etsu.edu/tarnoff/othr2150/mem_hier.gif)
 
 ## CPU Layout and Networking
